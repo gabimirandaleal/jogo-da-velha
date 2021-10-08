@@ -1,0 +1,9 @@
+.tabuleiro {
+    display: flex;
+}
+
+.linha {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+}
