@@ -29,9 +29,15 @@ function escolherPersonagem(evt) {
         document.querySelector("#escolher").currentTime = 0;
         document.querySelector("#escolher").play();
         setTimeout(function() {
+
             audioIntro.currentTime = 0;
             audioIntro.play();
             jogador2 = evt.target.id
+            document.querySelector("#jogador-1").innerText = jogador1;
+            document.querySelector("#jogador-1").classList.add("pisca")
+            document.querySelector("#jogador-2").innerText = jogador2;
+            document.querySelector(".nomes-jogadores").style.display = "flex";
+            document.querySelector("#vs").innerText = " VS ";
             document.querySelector(".pop-up").style.display = "none";
             vez = true
             evt1.style.border = "5px solid black"

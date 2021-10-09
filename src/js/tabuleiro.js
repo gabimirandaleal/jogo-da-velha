@@ -52,12 +52,15 @@ function jogar(evt) {
             jogadorDaVez = false
             matriz[linha][coluna] = "x"
             div.style.backgroundImage = "url(./src/assets/img/" + jogador1 + ".png)"
-
+            document.querySelector("#jogador-1").classList.remove("pisca")
+            document.querySelector("#jogador-2").classList.add("pisca")
 
             if (verificarVitorias(linha, coluna, "x")) {
                 audioIntro.currentTime = 0;
                 audioIntro.pause();
                 document.querySelector("#vitoria").play();
+                document.querySelector("#jogador-2").classList.remove("pisca")
+                document.querySelector("#jogador-1").classList.add("pisca")
                 ganhou = true
                 setTimeout(function() {
                     reset();
@@ -67,6 +70,8 @@ function jogar(evt) {
                 audioIntro.currentTime = 0;
                 audioIntro.pause();
                 document.querySelector("#empate").play();
+                document.querySelector("#jogador-2").classList.add("pisca")
+                document.querySelector("#jogador-1").classList.add("pisca")
                 ganhou = true
                 setTimeout(function() {
 
@@ -81,8 +86,12 @@ function jogar(evt) {
             document.querySelector("#adicionar").currentTime = 0;
             document.querySelector("#adicionar").play();
             matriz[linha][coluna] = "o"
+            document.querySelector("#jogador-2").classList.remove("pisca")
+            document.querySelector("#jogador-1").classList.add("pisca")
             div.style.backgroundImage = "url(./src/assets/img/" + jogador2 + ".png)"
             if (verificarVitorias(linha, coluna, "o")) {
+                document.querySelector("#jogador-2").classList.add("pisca")
+                document.querySelector("#jogador-1").classList.remove("pisca")
                 audioIntro.currentTime = 0;
                 audioIntro.pause();
                 document.querySelector("#vitoria").play();
@@ -92,6 +101,8 @@ function jogar(evt) {
                 }, 6000)
             }
             if (verificarEmpate(matriz.length, matriz.length)) {
+                document.querySelector("#jogador-2").classList.add("pisca")
+                document.querySelector("#jogador-1").classList.add("pisca")
                 audioIntro.currentTime = 0;
                 audioIntro.pause();
                 document.querySelector("#empate").play();
@@ -139,7 +150,9 @@ function reset() {
     let list = document.querySelectorAll(".adicionarImg");
     let listCaixinha = document.querySelectorAll(".caixinhaapagada");
     let ganhouList = document.querySelectorAll(".ganhou");
-
+    document.querySelector("#jogador-2").classList.remove("pisca")
+    document.querySelector("#jogador-1").classList.remove("pisca")
+    document.querySelector(".nomes-jogadores").style.display = "none";
     for (let i = 0; i < listCaixinha.length; i++) {
         listCaixinha[i].classList.remove("caixinhaapagada")
     }
