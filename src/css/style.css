@@ -1,15 +1,108 @@
-body {}
+@font-face {
+    font-family: "SuperMario256";
+    src: url(../assets/fonte/SuperMario256.ttf);
+}
+
+body {
+    background-image: url(../assets/img/cubodemadeira.png);
+}
+
+header p {
+    font-family: SuperMario256;
+    font-size: 60px;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #000;
+    text-shadow: 7px 7px black;
+}
+
+header {
+    margin-bottom: 100px;
+    margin-top: 20px;
+}
 
 .tabuleiro {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+.adicionarImg {
+    height: 90%;
+    width: 90%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .linha {
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
+    width: 80px;
+    height: 80px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    background-image: url(../assets/img/caixinhasurpresa.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+    animation: bounce 1s;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateX(-200vh);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.tirarBordaRight {
+    border-right: 0px;
+}
+
+.tirarBordaBottom {
+    border-bottom: 0px;
+}
+
+.colorirVermelho {
+    color: red;
+}
+
+.colorirVerde {
+    color: green;
+}
+
+.colorirAmarelo {
+    color: yellow;
+}
+
+.colorirAzul {
+    color: blue;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.titulo p {}
+
+.espaco {
+    margin-right: 10px;
+}
+
+.palavra {
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.palavra p {
+    margin-right: 6px;
 }
