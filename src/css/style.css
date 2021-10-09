@@ -27,7 +27,7 @@ header {
 }
 
 .ganhou .adicionarImg {
-    animation: bounce-text 1s alternate-reverse;
+    animation: zoom-in-zoom-out 2s ease-out infinite;
 }
 
 .adicionarImg {
@@ -61,14 +61,15 @@ header {
     }
 }
 
-@keyframes bounce-text {
-    from {
-        width: 110%;
-        height: 110%;
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(1, 1);
     }
-    to {
-        height: 90%;
-        width: 90%;
+    50% {
+        transform: scale(1.5, 1.5);
+    }
+    100% {
+        transform: scale(1, 1);
     }
 }
 
@@ -176,6 +177,10 @@ header {
     border: 5px solid white;
 }
 
+.titulo-escolher {
+    margin-bottom: 30px;
+}
+
 @media (min-width: 600px) {
     .linha {
         width: 150px;
@@ -183,5 +188,22 @@ header {
     }
     body {
         font-size: 120px;
+    }
+    .pop-up__menu___img {
+        max-width: 400px;
+    }
+    .pop-up__menu {
+        bottom: 20%;
+        height: 550px;
+    }
+    .titulo-escolher {
+        margin-bottom: 80px;
+    }
+    .pop-up__menu img {
+        width: 80px;
+        height: 80px;
+    }
+    .pop-up__menu p {
+        font-size: 50px;
     }
 }

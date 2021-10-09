@@ -1,9 +1,8 @@
-criarTabuleiro(3, 3)
-inicializarMatriz(3, 3)
 let vez = true
 let evt1;
 let evt2;
-
+let audioIntro = document.querySelector("#musicaintro");
+audioIntro.play();
 const listaPersonagens = document.querySelectorAll(".img-personagem")
 
 listaPersonagens.forEach(disco => {
@@ -16,17 +15,29 @@ function escolherPersonagem(evt) {
         jogador1 = evt.target.id
         vez = false
         evt.target.style.border = "5px solid white"
-        evt1 = evt.target
+        audioIntro.pause();
+        document.querySelector("#escolher").play();
+        setTimeout(function() {
+            audioIntro.play();
+            evt1 = evt.target
+        }, 1500)
     } else if (jogador1 != evt.target.id) {
         evt.target.style.border = "5px solid white"
         evt2 = evt.target
+        audioIntro.pause();
+        document.querySelector("#escolher").currentTime = 0;
+        document.querySelector("#escolher").play();
         setTimeout(function() {
+            audioIntro.currentTarget = 0;
+            audioIntro.play();
             jogador2 = evt.target.id
             document.querySelector(".pop-up").style.display = "none";
             vez = true
             evt1.style.border = "5px solid black"
             evt2.style.border = "5px solid black"
-        }, 500)
+            criarTabuleiro(3, 3)
+            inicializarMatriz(3, 3)
+        }, 1500)
 
     } else {
         vez = true

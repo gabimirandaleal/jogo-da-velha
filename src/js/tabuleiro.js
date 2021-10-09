@@ -47,23 +47,62 @@ function jogar(evt) {
     let linha = Number(array[1][1])
     if (matriz[linha][coluna] == "" && !ganhou) {
         if (jogadorDaVez) {
+            document.querySelector("#adicionar").currentTime = 0;
+            document.querySelector("#adicionar").play();
+            jogadorDaVez = false
             matriz[linha][coluna] = "x"
             div.style.backgroundImage = "url(./src/assets/img/" + jogador1 + ".png)"
-            jogadorDaVez = false
+
+
             if (verificarVitorias(linha, coluna, "x")) {
+                audioIntro.currentTime = 0;
+                audioIntro.pause();
+                document.querySelector("#vitoria").play();
+                ganhou = true
                 setTimeout(function() {
                     reset();
-                }, 2000)
+                }, 6000)
             }
+            if (verificarEmpate(matriz.length, matriz.length)) {
+                audioIntro.currentTime = 0;
+                audioIntro.pause();
+                document.querySelector("#empate").play();
+                ganhou = true
+                setTimeout(function() {
+
+
+                    reset();
+                }, 4000)
+            }
+
+
         } else {
+            jogadorDaVez = true
+            document.querySelector("#adicionar").currentTime = 0;
+            document.querySelector("#adicionar").play();
             matriz[linha][coluna] = "o"
             div.style.backgroundImage = "url(./src/assets/img/" + jogador2 + ".png)"
-            jogadorDaVez = true
             if (verificarVitorias(linha, coluna, "o")) {
+                audioIntro.currentTime = 0;
+                audioIntro.pause();
+                document.querySelector("#vitoria").play();
+                ganhou = true
                 setTimeout(function() {
                     reset();
-                }, 2000)
+                }, 6000)
             }
+            if (verificarEmpate(matriz.length, matriz.length)) {
+                audioIntro.currentTime = 0;
+                audioIntro.pause();
+                document.querySelector("#empate").play();
+                ganhou = true
+                setTimeout(function() {
+
+
+                    reset();
+                }, 4000)
+            }
+
         }
 
         this.classList.add("caixinhaapagada")
@@ -91,14 +130,12 @@ function verificarVitorias(i, j, XorO) {
             return true;
         }
     }
-    if (verificarEmpate(matriz.length, matriz.length)) {
-        ganhou = true;
-        return true;
-    }
     return false
 }
 
 function reset() {
+    audioIntro.currentTime = 0;
+    audioIntro.play();
     let list = document.querySelectorAll(".adicionarImg");
     let listCaixinha = document.querySelectorAll(".caixinhaapagada");
     let ganhouList = document.querySelectorAll(".ganhou");
@@ -116,4 +153,8 @@ function reset() {
     jogadorDaVez = true
     inicializarMatriz(matriz.length, matriz.length);
     document.querySelector(".pop-up").style.display = "flex";
+    for (let i = 0; i < matriz.length; i++) {
+        const colunas1 = document.querySelector("#coluna-" + i)
+        colunas1.parentNode.removeChild(colunas1)
+    }
 }
