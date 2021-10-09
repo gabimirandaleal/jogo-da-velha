@@ -2,7 +2,6 @@ let vez = true
 let evt1;
 let evt2;
 let audioIntro = document.querySelector("#musicaintro");
-audioIntro.muted = false
 audioIntro.play();
 audioIntro.loop = true;
 const listaPersonagens = document.querySelectorAll(".img-personagem")
