@@ -3,7 +3,6 @@ let evt1;
 let evt2;
 var audioIntro = document.querySelector("#musicaintro");
 audioIntro.autoplay = true;
-console.log(audioIntro)
 const listaPersonagens = document.querySelectorAll(".img-personagem")
 
 
