@@ -3,6 +3,7 @@ let evt1;
 let evt2;
 let audioIntro = document.querySelector("#musicaintro");
 audioIntro.play();
+audioIntro.loop = true;
 const listaPersonagens = document.querySelectorAll(".img-personagem")
 
 listaPersonagens.forEach(disco => {
@@ -28,7 +29,7 @@ function escolherPersonagem(evt) {
         document.querySelector("#escolher").currentTime = 0;
         document.querySelector("#escolher").play();
         setTimeout(function() {
-            audioIntro.currentTarget = 0;
+            audioIntro.currentTime = 0;
             audioIntro.play();
             jogador2 = evt.target.id
             document.querySelector(".pop-up").style.display = "none";
