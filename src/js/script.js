@@ -17,6 +17,7 @@ function escolherPersonagem(evt) {
         vez = false
         evt.target.style.border = "5px solid white"
         audioIntro.pause();
+        document.querySelector("#escolher").currentTime = 0;
         document.querySelector("#escolher").play();
         setTimeout(function() {
             audioIntro.play();
