@@ -5,15 +5,12 @@
 
 body {
     background-image: url(../assets/img/cubodemadeira.png);
-}
-
-header p {
     font-family: SuperMario256;
     font-size: 60px;
     font-weight: bolder;
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #000;
-    text-shadow: 7px 7px black;
+    text-shadow: 5px 5px black;
 }
 
 header {
@@ -115,7 +112,6 @@ header {
 .palavra {
     display: flex;
     justify-content: center;
-    margin-left: 10px;
 }
 
 .palavra p {
@@ -124,4 +120,56 @@ header {
 
 .caixinhaapagada {
     background-image: url(../assets/img/caixinhasurpresaapagada.jpg);
+}
+
+.pop-up {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: -0.2%;
+    background-color: rgba(0, 0, 0, 0.301);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pop-up__menu {
+    background-color: rgba(52, 172, 62, 0.808);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 90%;
+}
+
+.pop-up__menu p {
+    font-size: 30px;
+}
+
+.pop-up__menu___img {
+    max-width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pop-up__menu img {
+    padding: 5px;
+    background-color: rgba(65, 62, 62, 0.794);
+    width: 50px;
+    height: 50px;
+    border: 5px solid black;
+    border-radius: 100%;
+    object-fit: contain;
+    margin: 20px 0px 0px 10px;
+}
+
+.escolhido {
+    border: 5px solid white;
 }

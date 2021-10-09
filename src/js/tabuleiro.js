@@ -2,6 +2,8 @@ const tabuleiro = document.querySelector(".tabuleiro")
 let matriz = [];
 let jogadorDaVez = true;
 let ganhou = false;
+let jogador1
+let jogador2
 
 function criarTabuleiro(linha, coluna) {
     for (let i = 0; i < coluna; i++) {
@@ -37,6 +39,7 @@ function inicializarMatriz(linha, coluna) {
 }
 
 function jogar(evt) {
+    console.log(jogador1, jogador2)
     const div = document.createElement("div")
     div.classList.add("adicionarImg")
     let array = evt.currentTarget.id.split("-")
@@ -45,8 +48,7 @@ function jogar(evt) {
     if (matriz[linha][coluna] == "" && !ganhou) {
         if (jogadorDaVez) {
             matriz[linha][coluna] = "x"
-            let jogador = "toad"
-            div.style.backgroundImage = "url(./src/assets/img/" + jogador + ".png)"
+            div.style.backgroundImage = "url(./src/assets/img/" + jogador1 + ".png)"
             jogadorDaVez = false
             if (verificarVitorias(linha, coluna, "x")) {
                 setTimeout(function() {
@@ -55,8 +57,7 @@ function jogar(evt) {
             }
         } else {
             matriz[linha][coluna] = "o"
-            let jogador = "mario"
-            div.style.backgroundImage = "url(./src/assets/img/" + jogador + ".png)"
+            div.style.backgroundImage = "url(./src/assets/img/" + jogador2 + ".png)"
             jogadorDaVez = true
             if (verificarVitorias(linha, coluna, "o")) {
                 setTimeout(function() {
@@ -114,4 +115,5 @@ function reset() {
     ganhou = false
     jogadorDaVez = true
     inicializarMatriz(matriz.length, matriz.length);
+    document.querySelector(".pop-up").style.display = "flex";
 }
