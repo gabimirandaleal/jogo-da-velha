@@ -1,11 +1,11 @@
 let vez = true
 let evt1;
 let evt2;
-let audioIntro = document.querySelector("#musicaintro");
-audioIntro.autoplay;
-audioIntro.play();
-audioIntro.loop = true;
+var audioIntro = document.querySelector("#musicaintro");
+audioIntro.autoplay = true;
+console.log(audioIntro)
 const listaPersonagens = document.querySelectorAll(".img-personagem")
+
 
 listaPersonagens.forEach(disco => {
     disco.addEventListener("click", escolherPersonagem)

@@ -18,6 +18,11 @@ header {
     margin-top: 20px;
 }
 
+#musicaintro {
+    position: absolute;
+    left: -500px;
+}
+
 .tabuleiro {
     display: flex;
     justify-content: center;
