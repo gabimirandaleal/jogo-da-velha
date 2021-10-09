@@ -29,6 +29,10 @@ header {
     height: 100%;
 }
 
+.ganhou .adicionarImg {
+    animation: bounce-text 1s alternate-reverse;
+}
+
 .adicionarImg {
     height: 90%;
     width: 90%;
@@ -40,8 +44,8 @@ header {
 .linha {
     width: 80px;
     height: 80px;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
     background-image: url(../assets/img/caixinhasurpresa.png);
     background-size: cover;
     display: flex;
@@ -57,6 +61,17 @@ header {
     }
     100% {
         transform: translateX(0%);
+    }
+}
+
+@keyframes bounce-text {
+    from {
+        width: 110%;
+        height: 110%;
+    }
+    to {
+        height: 90%;
+        width: 90%;
     }
 }
 
@@ -105,4 +120,8 @@ header {
 
 .palavra p {
     margin-right: 6px;
+}
+
+.caixinhaapagada {
+    background-image: url(../assets/img/caixinhasurpresaapagada.jpg);
 }

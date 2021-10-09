@@ -1,6 +1,7 @@
 const tabuleiro = document.querySelector(".tabuleiro")
-const matriz = [];
+let matriz = [];
 let jogadorDaVez = true;
+let ganhou = false;
 
 function criarTabuleiro(linha, coluna) {
     for (let i = 0; i < coluna; i++) {
@@ -10,6 +11,7 @@ function criarTabuleiro(linha, coluna) {
         for (let j = 0; j < linha; j++) {
             const divLinha = document.createElement("div")
             divLinha.id = "linha-" + i + j
+
             divLinha.classList.add("linha")
             if (i == coluna - 1) {
                 divLinha.classList.add("tirarBordaRight")
@@ -25,6 +27,7 @@ function criarTabuleiro(linha, coluna) {
 }
 
 function inicializarMatriz(linha, coluna) {
+    matriz = []
     for (let i = 0; i < linha; i++) {
         matriz[i] = [];
         for (let j = 0; j < coluna; j++) {
@@ -39,20 +42,76 @@ function jogar(evt) {
     let array = evt.currentTarget.id.split("-")
     let coluna = Number(array[1][0])
     let linha = Number(array[1][1])
-    if (matriz[linha][coluna] == "") {
+    if (matriz[linha][coluna] == "" && !ganhou) {
         if (jogadorDaVez) {
             matriz[linha][coluna] = "x"
             let jogador = "toad"
             div.style.backgroundImage = "url(./src/assets/img/" + jogador + ".png)"
             jogadorDaVez = false
+            if (verificarVitorias(linha, coluna, "x")) {
+                setTimeout(function() {
+                    reset();
+                }, 2000)
+            }
         } else {
             matriz[linha][coluna] = "o"
             let jogador = "mario"
             div.style.backgroundImage = "url(./src/assets/img/" + jogador + ".png)"
             jogadorDaVez = true
+            if (verificarVitorias(linha, coluna, "o")) {
+                setTimeout(function() {
+                    reset();
+                }, 2000)
+            }
         }
-        this.style.backgroundImage = "url(./src/assets/img/caixinhasurpresaapagada.jpg)"
+
+        this.classList.add("caixinhaapagada")
         evt.currentTarget.appendChild(div)
     }
 
+}
+
+function verificarVitorias(i, j, XorO) {
+    if (verificarVitoriaHorizontal(i, matriz.length, XorO)) {
+        ganhou = true;
+        return true;
+    }
+    if (verificarVitoriaVertical(matriz.length, j, XorO)) {
+        ganhou = true;
+        return true;
+    }
+    if (verificarVitoriaDiagonalSecundária(matriz.length, XorO)) {
+        ganhou = true;
+        return true;
+    }
+    if (i == j) {
+        if (verificarVitoriaDiagonalPrincipal(matriz.length, XorO)) {
+            ganhou = true;
+            return true;
+        }
+    }
+    if (verificarEmpate(matriz.length, matriz.length)) {
+        ganhou = true;
+        return true;
+    }
+    return false
+}
+
+function reset() {
+    let list = document.querySelectorAll(".adicionarImg");
+    let listCaixinha = document.querySelectorAll(".caixinhaapagada");
+    let ganhouList = document.querySelectorAll(".ganhou");
+
+    for (let i = 0; i < listCaixinha.length; i++) {
+        listCaixinha[i].classList.remove("caixinhaapagada")
+    }
+    for (let i = 0; i < list.length; i++) {
+        list[i].parentNode.removeChild(list[i])
+    }
+    for (let i = 0; i < ganhouList.length; i++) {
+        ganhouList[i].classList.remove("ganhou")
+    }
+    ganhou = false
+    jogadorDaVez = true
+    inicializarMatriz(matriz.length, matriz.length);
 }
