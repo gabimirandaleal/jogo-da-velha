@@ -39,7 +39,6 @@ function inicializarMatriz(linha, coluna) {
 }
 
 function jogar(evt) {
-    console.log(jogador1, jogador2)
     const div = document.createElement("div")
     div.classList.add("adicionarImg")
     let array = evt.currentTarget.id.split("-")
@@ -65,8 +64,7 @@ function jogar(evt) {
                 setTimeout(function() {
                     reset();
                 }, 6000)
-            }
-            if (verificarEmpate(matriz.length, matriz.length)) {
+            } else if (verificarEmpate(matriz.length, matriz.length)) {
                 audioIntro.currentTime = 0;
                 audioIntro.pause();
                 document.querySelector("#empate").play();
@@ -99,8 +97,7 @@ function jogar(evt) {
                 setTimeout(function() {
                     reset();
                 }, 6000)
-            }
-            if (verificarEmpate(matriz.length, matriz.length)) {
+            } else if (verificarEmpate(matriz.length, matriz.length)) {
                 document.querySelector("#jogador-2").classList.add("pisca")
                 document.querySelector("#jogador-1").classList.add("pisca")
                 audioIntro.currentTime = 0;

@@ -11,7 +11,6 @@ listaPersonagens.forEach(disco => {
 })
 
 function escolherPersonagem(evt) {
-    console.log(evt)
     if (vez) {
         jogador1 = evt.target.id
         vez = false
